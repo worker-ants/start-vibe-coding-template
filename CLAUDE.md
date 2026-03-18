@@ -1,0 +1,43 @@
+# 폴더 구조
+`Monorepo`로 구성되어 있습니다.
+- 서버는 반드시 `backend`에 구성합니다.
+- 클라이언트는 반드시 `frontend`에 구성합니다.
+
+```text
+/tetris-online (Root)
+  ├── .git
+  ├── .gitignore
+  ├── spec/                     # 프로젝트 스펙 문서 (Spec-Driven Development)
+  ├── review/                   # 코드 리뷰
+  │   ├── **/                   # 요청 시간 구분
+  │   │   ├── */*.md            # 각 분야의 전문가들이 작성한 리뷰
+  │   │   ├── SUMMARY.md        # 전문가들의 리뷰를 요약한 내용
+  │   │   └── RESOLUTION.md     # 코드 리뷰의 이슈 조치 내용
+  ├── frontend/                 # 클라이언트 (Next.js)
+  │   ├── package.json
+  │   ├── .env
+  │   └── src/
+  └── backend/                  # 서버 (Nest.js)
+      ├── package.json
+      ├── .env
+      └── src/
+```
+
+# 개발 방법론
+모든 개발은 반드시 `SDD(Spec-Driven Development)`와 `TDD(Test-Driven Development)`로 접근해야 합니다.
+
+작업시에는 아래의 작업을 순서대로 수행해야 합니다.
+1. 먼저 대화를 진행하며 상세한 요구사항을 수집하세요.
+2. `spec` 경로에 markdown 파일로 명확하고 상세하게 개발을 위한 스펙 문서를 작성하세요.
+3. 스펙을 기반으로 frontend 또는 backend에 테스트 코드를 작성하세요.
+4. 스펙과 테스트 코드를 기반으로 구현을 진행합니다.
+5. 구현이 완료된 후, 정상 동작을 확인하기 위해 반드시 lint, unit test를 진행하세요.
+6. 테스트가 통과하면, `ai-review` 스킬을 사용하여 코드 리뷰를 진행하세요. (역할 기반 AI 리뷰어 에이전트의 코드 리뷰)
+7. 코드 리뷰의 결과를 확인하고 조치를 진행하세요.
+
+# 프로젝트 스펙 문서
+제품의 최종 스펙을 정의한 문서입니다.
+history가 아닌 latest에 대한 기술이므로 필요할 경우에는 문서를 전체적으로 정리해야 합니다.
+
+# 코드 리뷰 결과의 조치
+코드 리뷰의 이슈를 처리한 다음, **반드시** 조치 내용을 `review/**/RESOLUTION.md` 파일에 작성해 주세요.
